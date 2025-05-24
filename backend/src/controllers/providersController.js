@@ -61,5 +61,21 @@ providersController.putProviders = async (req, res) => {
 
   res.json({ message: "Provider saved" });
 };
+providersController.deleteProvider = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedProvider = await providersModel.findByIdAndDelete(id);
+
+    if (!deletedProvider) {
+      return res.status(404).json({ message: "Proveedor no encontrado" });
+    }
+
+    res.json({ message: "Proveedor eliminado correctamente" });
+  } catch (error) {
+    console.error("Error al eliminar proveedor:", error);
+    res.status(500).json({ message: "Error al eliminar proveedor" });
+  }
+};
 
 export default providersController;

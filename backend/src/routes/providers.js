@@ -15,5 +15,7 @@ router
 
   router.route("/:id")
   .put(upload.single("image"), providersController.putProviders)
+  .delete(upload.single("image"), providersController.deleteProvider)
+
 
 export default router;
