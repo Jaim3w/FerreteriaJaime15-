@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: "ferreteria-jaime15.vercel.app",
             // Permitir envío de cookies y credenciales
         credentials : true
     })

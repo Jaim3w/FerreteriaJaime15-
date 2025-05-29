@@ -24,7 +24,7 @@ const Providers = () => {
   const fetchProviders = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/api/providers");
+      const response = await fetch("https://ferreteriajaime15.onrender.com/api/providers");
       const data = await response.json();
       setProviders(data);
     } catch (error) {
@@ -70,8 +70,8 @@ const Providers = () => {
 
     try {
       const url = editingId
-        ? `http://localhost:5000/api/providers/${editingId}`
-        : "http://localhost:5000/api/providers";
+        ? `https://ferreteriajaime15.onrender.com/api/providers/${editingId}`
+        : "https://ferreteriajaime15.onrender.com/api/providers";
       const method = editingId ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -124,7 +124,7 @@ const Providers = () => {
 
     if (confirm.isConfirmed) {
       try {
-        const response = await fetch(`http://localhost:5000/api/providers/${id}`, {
+        const response = await fetch(`https://ferreteriajaime15.onrender.com/api/providers/${id}`, {
           method: "DELETE",
         });
 

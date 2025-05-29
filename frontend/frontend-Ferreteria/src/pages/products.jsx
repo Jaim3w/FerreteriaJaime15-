@@ -20,7 +20,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/products");
+      const response = await fetch("https://ferreteriajaime15.onrender.com/api/products");
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -37,8 +37,8 @@ const Products = () => {
 
     try {
       const url = editingId
-        ? `http://localhost:5000/api/products/${editingId}`
-        : "http://localhost:5000/api/products";
+        ? `https://ferreteriajaime15.onrender.com/api/products/${editingId}`
+        : "https://ferreteriajaime15.onrender.com/api/products";
       const method = editingId ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -91,7 +91,7 @@ const Products = () => {
 
     if (confirm.isConfirmed) {
       try {
-        const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+        const response = await fetch(`https://ferreteriajaime15.onrender.com/api/products/${id}`, {
           method: "DELETE",
         });
 
