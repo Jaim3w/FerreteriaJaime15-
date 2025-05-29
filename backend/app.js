@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 app.use(
     cors({
-        origin: "ferreteria-jaime15.vercel.app",
+        origin: "https://ferreteria-jaime15.vercel.app",
             // Permitir envío de cookies y credenciales
         credentials : true
     })
