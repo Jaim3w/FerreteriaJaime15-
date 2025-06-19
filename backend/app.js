@@ -15,6 +15,10 @@ import providersRoutes from "./src/routes/providers.js";
 import brandRoutes from "./src/routes/brand.js";
 import{validateAuthToken} from "./src/middlewares/validateAuthToken.js"
 import cors from "cors"
+import tasksRoutes from "./src/routes/tasks.js";
+import fs from "fs";
+import path from "path";
+import swaggerUi from "swagger-ui-express";
 
 // Creo una constante que es igual a la libreria que importé
 const app = express();
@@ -33,7 +37,11 @@ app.use(
         credentials : true
     })
 );
-
+const swaggerDocument = JSON.parse(
+    fs.readFileSync(path.resolve("./documentacion.json"), "utf-8")
+  );
+  
+app.use("/api/docs",swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/api/products",/*validateAuthToken(["admin", "employee"]),*/ productsRoutes);
 app.use("/api/customers", customersRoutes);
@@ -51,6 +59,6 @@ app.use("/api/RecoveryPassword", recoveryPasswordRoutes);
 
 app.use("/api/providers", /*validateAuthToken(["admin"]),*/ providersRoutes);
 app.use("/api/brand",brandRoutes );
-
+app.use ("/api/tasks",tasksRoutes)
 // Exporto la constante para poder usar express en otros archivos
 export default app;
